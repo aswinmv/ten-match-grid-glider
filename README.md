@@ -1,73 +1,52 @@
-# Welcome to your Lovable project
+# 🧩 Cooplix Number Match Game
 
-## Project info
+A lovable and minimalist number puzzle game where you match tiles that are either the same or add up to 10. Built with a focus on smooth gameplay, soft UI, and an engaging user experience.
 
-**URL**: https://lovable.dev/projects/3a20f0be-5218-4f2a-97a4-e0322dc85aae
+🔗 **Play it live:** [www.cooplix.site](https://www.cooplix.site)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🎮 Game Concept
 
-**Use Lovable**
+- Tap two numbers that are:
+  - **Identical** (e.g., 7 + 7), or  
+  - **Add up to 10** (e.g., 4 + 6)
+- Valid matches must be:
+  - **Adjacent** (vertically, horizontally, diagonally), or  
+  - At the **ends of the same row**
+- After a successful match:
+  - The numbers disappear
+  - A gray tile with the letter `N` appears in their place (non-interactive visual element)
+- If no matches are available, you can **add a new row** to continue playing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3a20f0be-5218-4f2a-97a4-e0322dc85aae) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Features
 
-**Use your preferred IDE**
+- 💡 **Hint Button**: Tap to highlight the first available valid match
+- 🧠 **Brain Training Gameplay**: Perfect for short, casual puzzle sessions
+- 💖 **Lovable UI**: Soft pastel colors, emoji tile faces, gentle bounce animations
+- 🔁 **Restart Button**: Instantly reset the board
+- 📱 **Responsive Design**: Works great on desktop and mobile
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📦 Tech Stack
 
-Follow these steps:
+- **Frontend**: React
+- **Styling**: Tailwind CSS
+- **Game Logic**: Custom hook (`useGameLogic`)
+- **Animations**: CSS transitions or Framer Motion
+- **Deployment**: Hosted at [www.cooplix.site](https://www.cooplix.site)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+To run the game locally:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/your-username/cooplix-number-match.git
+cd cooplix-number-match
+npm install
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/3a20f0be-5218-4f2a-97a4-e0322dc85aae) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
