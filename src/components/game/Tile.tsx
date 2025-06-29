@@ -10,6 +10,15 @@ interface TileProps {
 }
 
 const Tile: React.FC<TileProps> = ({ tile, index, isSelected, onClick }) => {
+  // Handle matched tiles - show gray "N" box
+  if (tile.isMatched) {
+    return (
+      <div className="aspect-square rounded text-sm sm:text-base md:text-lg font-bold bg-gray-200 text-gray-500 border border-gray-300 flex items-center justify-center cursor-default">
+        N
+      </div>
+    );
+  }
+
   return (
     <button
       onClick={() => onClick(tile, index)}

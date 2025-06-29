@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { toast } from '@/hooks/use-toast';
 
@@ -8,6 +7,7 @@ export interface Tile {
   row: number;
   col: number;
   isEmpty: boolean;
+  isMatched: boolean;
 }
 
 export interface SelectedTile {
@@ -33,7 +33,8 @@ export const useGameLogic = () => {
           value: Math.floor(Math.random() * 9) + 1,
           row,
           col,
-          isEmpty: false
+          isEmpty: false,
+          isMatched: false
         });
       }
     }
@@ -69,7 +70,7 @@ export const useGameLogic = () => {
 
   // Check if a match is valid
   const isValidMatch = (tile1: Tile, tile2: Tile): boolean => {
-    if (tile1.isEmpty || tile2.isEmpty) return false;
+    if (tile1.isEmpty || tile2.isEmpty || tile1.isMatched || tile2.isMatched) return false;
     
     // Check if values match the rules (identical or sum to 10)
     const valuesMatch = tile1.value === tile2.value || tile1.value + tile2.value === 10;
@@ -82,7 +83,7 @@ export const useGameLogic = () => {
 
   // Handle tile selection
   const handleTileClick = (tile: Tile, index: number) => {
-    if (tile.isEmpty) return;
+    if (tile.isEmpty || tile.isMatched) return;
 
     // If tile is already selected, deselect it
     if (selectedTiles.some(selected => selected.tile.id === tile.id)) {
@@ -101,10 +102,10 @@ export const useGameLogic = () => {
       const firstTile = selectedTiles[0];
       
       if (isValidMatch(firstTile.tile, tile)) {
-        // Valid match - remove both tiles
+        // Valid match - mark both tiles as matched
         const newGrid = [...grid];
-        newGrid[firstTile.index] = { ...newGrid[firstTile.index], isEmpty: true };
-        newGrid[index] = { ...newGrid[index], isEmpty: true };
+        newGrid[firstTile.index] = { ...newGrid[firstTile.index], isMatched: true };
+        newGrid[index] = { ...newGrid[index], isMatched: true };
         
         setGrid(newGrid);
         setScore(prev => prev + 10);
@@ -128,7 +129,7 @@ export const useGameLogic = () => {
 
   // Check if any matches are available
   const hasAvailableMatches = useCallback((): boolean => {
-    const activeTiles = grid.filter(tile => !tile.isEmpty);
+    const activeTiles = grid.filter(tile => !tile.isEmpty && !tile.isMatched);
     
     for (let i = 0; i < activeTiles.length; i++) {
       for (let j = i + 1; j < activeTiles.length; j++) {
@@ -152,7 +153,8 @@ export const useGameLogic = () => {
         value: Math.floor(Math.random() * 9) + 1,
         row: newRowIndex,
         col,
-        isEmpty: false
+        isEmpty: false,
+        isMatched: false
       });
     }
     
