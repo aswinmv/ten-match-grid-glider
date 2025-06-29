@@ -20,6 +20,7 @@ export const useGameLogic = () => {
   const [selectedTiles, setSelectedTiles] = useState<SelectedTile[]>([]);
   const [score, setScore] = useState(0);
   const [gameRows, setGameRows] = useState(9);
+  const [hintTiles, setHintTiles] = useState<string[]>([]);
 
   // Initialize the game grid
   const initializeGrid = useCallback((rows: number = 9) => {
@@ -85,6 +86,11 @@ export const useGameLogic = () => {
   const handleTileClick = (tile: Tile, index: number) => {
     if (tile.isEmpty || tile.isMatched) return;
 
+    // Clear hints when player takes action
+    if (hintTiles.length > 0) {
+      setHintTiles([]);
+    }
+
     // If tile is already selected, deselect it
     if (selectedTiles.some(selected => selected.tile.id === tile.id)) {
       setSelectedTiles(selectedTiles.filter(selected => selected.tile.id !== tile.id));
@@ -126,6 +132,36 @@ export const useGameLogic = () => {
       }
     }
   };
+
+  // Find first available hint
+  const findHint = useCallback((): void => {
+    const activeTiles = grid.filter(tile => !tile.isEmpty && !tile.isMatched);
+    
+    for (let i = 0; i < activeTiles.length; i++) {
+      for (let j = i + 1; j < activeTiles.length; j++) {
+        if (isValidMatch(activeTiles[i], activeTiles[j])) {
+          setHintTiles([activeTiles[i].id, activeTiles[j].id]);
+          
+          // Clear hint after 3 seconds
+          setTimeout(() => {
+            setHintTiles([]);
+          }, 3000);
+          
+          toast({
+            title: "Hint",
+            description: `Look for ${activeTiles[i].value} and ${activeTiles[j].value}!`,
+          });
+          return;
+        }
+      }
+    }
+    
+    toast({
+      title: "No hints available",
+      description: "Try adding a new row!",
+      variant: "destructive"
+    });
+  }, [grid]);
 
   // Check if any matches are available
   const hasAvailableMatches = useCallback((): boolean => {
@@ -172,6 +208,7 @@ export const useGameLogic = () => {
     initializeGrid();
     setSelectedTiles([]);
     setScore(0);
+    setHintTiles([]);
     toast({
       title: "Game reset!",
       description: "Ready for a new challenge?",
@@ -180,6 +217,10 @@ export const useGameLogic = () => {
 
   const isTileSelected = (tileId: string): boolean => {
     return selectedTiles.some(selected => selected.tile.id === tileId);
+  };
+
+  const isTileHinted = (tileId: string): boolean => {
+    return hintTiles.includes(tileId);
   };
 
   // Initialize game on component mount
@@ -207,6 +248,8 @@ export const useGameLogic = () => {
     hasAvailableMatches,
     addNewRow,
     resetGame,
-    isTileSelected
+    isTileSelected,
+    findHint,
+    isTileHinted
   };
 };

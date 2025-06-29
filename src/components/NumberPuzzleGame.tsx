@@ -14,7 +14,9 @@ const NumberPuzzleGame = () => {
     hasAvailableMatches,
     addNewRow,
     resetGame,
-    isTileSelected
+    isTileSelected,
+    findHint,
+    isTileHinted
   } = useGameLogic();
 
   return (
@@ -25,12 +27,14 @@ const NumberPuzzleGame = () => {
         <GameControls 
           onReset={resetGame}
           onAddRow={addNewRow}
+          onHint={findHint}
           hasAvailableMatches={hasAvailableMatches()}
         />
 
         <GameGrid 
           grid={grid}
           isTileSelected={isTileSelected}
+          isTileHinted={isTileHinted}
           onTileClick={handleTileClick}
         />
 

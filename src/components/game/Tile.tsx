@@ -6,10 +6,11 @@ interface TileProps {
   tile: TileType;
   index: number;
   isSelected: boolean;
+  isHinted: boolean;
   onClick: (tile: TileType, index: number) => void;
 }
 
-const Tile: React.FC<TileProps> = ({ tile, index, isSelected, onClick }) => {
+const Tile: React.FC<TileProps> = ({ tile, index, isSelected, isHinted, onClick }) => {
   // Handle matched tiles - show gray "N" box
   if (tile.isMatched) {
     return (
@@ -29,7 +30,9 @@ const Tile: React.FC<TileProps> = ({ tile, index, isSelected, onClick }) => {
           ? 'bg-transparent cursor-not-allowed border-transparent' 
           : isSelected
             ? 'bg-black text-white scale-105 sm:scale-110 border-black shadow-lg transform'
-            : 'bg-white text-black border-gray-300 hover:bg-gray-100 hover:border-black hover:scale-105 shadow-sm hover:shadow-md'
+            : isHinted
+              ? 'bg-white text-black border-yellow-400 border-2 shadow-lg animate-pulse'
+              : 'bg-white text-black border-gray-300 hover:bg-gray-100 hover:border-black hover:scale-105 shadow-sm hover:shadow-md'
         }
       `}
     >
