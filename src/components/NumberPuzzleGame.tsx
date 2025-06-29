@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -201,56 +200,56 @@ const NumberPuzzleGame = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-white p-2 sm:p-4 md:p-6">
+      <div className="max-w-md mx-auto sm:max-w-lg md:max-w-2xl">
         {/* Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-4xl font-bold text-white mb-2">Number Puzzle</h1>
-          <p className="text-blue-100 mb-4">Match identical numbers or pairs that sum to 10!</p>
+        <div className="text-center mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2">Number Puzzle</h1>
+          <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4 px-2">Match identical numbers or pairs that sum to 10!</p>
           
-          <Card className="inline-block p-4 bg-white/90 backdrop-blur-sm">
-            <div className="text-2xl font-bold text-purple-600">
+          <Card className="inline-block p-3 sm:p-4 bg-black text-white">
+            <div className="text-xl sm:text-2xl font-bold">
               Score: {score}
             </div>
           </Card>
         </div>
 
         {/* Game Controls */}
-        <div className="flex justify-center gap-4 mb-6">
+        <div className="flex justify-center gap-2 sm:gap-4 mb-4 sm:mb-6 px-2">
           <Button 
             onClick={resetGame}
-            className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+            className="bg-white hover:bg-gray-100 text-black border-2 border-black text-sm sm:text-base px-3 sm:px-4 py-2"
             variant="outline"
           >
-            <RefreshCw className="w-4 h-4 mr-2" />
-            Reset Game
+            <RefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+            Reset
           </Button>
           
           <Button
             onClick={addNewRow}
             disabled={hasAvailableMatches()}
-            className="bg-green-500 hover:bg-green-600 text-white disabled:opacity-50"
+            className="bg-black hover:bg-gray-800 text-white disabled:opacity-50 disabled:bg-gray-300 text-sm sm:text-base px-3 sm:px-4 py-2"
           >
-            <Plus className="w-4 h-4 mr-2" />
+            <Plus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
             Add Row
           </Button>
         </div>
 
         {/* Game Grid */}
-        <Card className="p-4 bg-white/10 backdrop-blur-sm border-white/20">
-          <div className="grid grid-cols-9 gap-2">
+        <Card className="p-2 sm:p-3 md:p-4 bg-white border-2 border-black">
+          <div className="grid grid-cols-9 gap-1 sm:gap-2">
             {grid.map((tile, index) => (
               <button
                 key={tile.id}
                 onClick={() => handleTileClick(tile, index)}
                 disabled={tile.isEmpty}
                 className={`
-                  aspect-square rounded-lg font-bold text-lg transition-all duration-200
+                  aspect-square rounded text-sm sm:text-base md:text-lg font-bold transition-all duration-200 border
                   ${tile.isEmpty 
-                    ? 'bg-transparent cursor-not-allowed' 
+                    ? 'bg-transparent cursor-not-allowed border-transparent' 
                     : isTileSelected(tile.id)
-                      ? 'bg-yellow-400 text-purple-800 scale-110 shadow-lg transform'
-                      : 'bg-white hover:bg-blue-50 text-purple-600 hover:scale-105 shadow-md hover:shadow-lg'
+                      ? 'bg-black text-white scale-105 sm:scale-110 border-black shadow-lg transform'
+                      : 'bg-white text-black border-gray-300 hover:bg-gray-100 hover:border-black hover:scale-105 shadow-sm hover:shadow-md'
                   }
                 `}
               >
@@ -261,9 +260,9 @@ const NumberPuzzleGame = () => {
         </Card>
 
         {/* Game Rules */}
-        <Card className="mt-6 p-4 bg-white/10 backdrop-blur-sm border-white/20">
-          <h3 className="text-white font-semibold mb-2">How to Play:</h3>
-          <ul className="text-blue-100 text-sm space-y-1">
+        <Card className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-50 border border-gray-200">
+          <h3 className="text-black font-semibold mb-2 text-sm sm:text-base">How to Play:</h3>
+          <ul className="text-gray-700 text-xs sm:text-sm space-y-1">
             <li>• Click two tiles that are identical OR sum to 10</li>
             <li>• Tiles must be adjacent (including diagonally)</li>
             <li>• OR at opposite ends of the same row with no tiles between</li>
