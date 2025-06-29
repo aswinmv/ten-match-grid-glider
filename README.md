@@ -5,6 +5,7 @@ A lovable and minimalist number puzzle game where you match tiles that are eithe
 🔗 **Play it live:** [www.cooplix.site](https://www.cooplix.site)
 
 ---
+![Screenshot 2025-06-29 123129](https://github.com/user-attachments/assets/4fac65f0-a722-4012-a535-659608346a47)
 
 ## 🎮 Game Concept
 
