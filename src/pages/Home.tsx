@@ -13,7 +13,7 @@ const Home = () => {
     <div 
       className="min-h-screen flex flex-col items-center justify-center relative bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: 'url("/lovable-uploads/084af43a-1e5b-45d1-b1b6-2bdbb8e2e846.png")'
+        backgroundImage: 'url("/lovable-uploads/f5f9751f-528c-408e-bbb7-a9a15528d493.png")'
       }}
     >
       {/* Overlay for better text readability */}
