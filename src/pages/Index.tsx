@@ -1,8 +1,8 @@
 
-import NumberPuzzleGame from "@/components/NumberPuzzleGame";
+import { Navigate } from "react-router-dom";
 
 const Index = () => {
-  return <NumberPuzzleGame />;
+  return <Navigate to="/" replace />;
 };
 
 export default Index;
