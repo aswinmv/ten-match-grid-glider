@@ -24,7 +24,7 @@ const Home = () => {
         </h1>
         
         {/* Subtitle */}
-        <p className="text-white sm:text-xl md:text-2xl mb-12 font-semibold drop-shadow-lg mx-[26px] text-base px-px text-center">
+        <p className="text-white text-lg sm:text-xl md:text-2xl mb-12 font-semibold drop-shadow-lg">
           Match identical numbers or pairs that sum to 10!
         </p>
         
