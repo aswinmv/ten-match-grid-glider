@@ -116,11 +116,6 @@ export const useGameLogic = () => {
         setGrid(newGrid);
         setScore(prev => prev + 10);
         setSelectedTiles([]);
-        
-        toast({
-          title: "Match found!",
-          description: `${firstTile.tile.value} and ${tile.value} - Great job!`,
-        });
       } else {
         // Invalid match - select the new tile instead
         setSelectedTiles([{ tile, index }]);
