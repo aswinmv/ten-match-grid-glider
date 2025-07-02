@@ -11,7 +11,7 @@ const Home = () => {
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-blue-900/20"></div>
       
-      <div className="relative z-10 text-center px-4 mt-16 mx-[5px] my-[212px]">
+      <div className="relative z-10 text-center px-4 mt-16 mx-[24px] my-[200px]">
         {/* Game Title with pixelated/retro style */}
         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 tracking-wider">
           <span className="inline-block text-yellow-400 drop-shadow-[0_6px_0_#1e40af] transform hover:scale-105 transition-transform duration-200">
