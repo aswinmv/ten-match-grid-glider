@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { toast } from '@/hooks/use-toast';
 
@@ -82,6 +83,13 @@ export const useGameLogic = () => {
     return valuesMatch && positionValid;
   };
 
+  // Trigger haptic feedback for invalid matches
+  const triggerHapticFeedback = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(200); // Vibrate for 200ms
+    }
+  };
+
   // Handle tile selection
   const handleTileClick = (tile: Tile, index: number) => {
     if (tile.isEmpty || tile.isMatched) return;
@@ -117,13 +125,9 @@ export const useGameLogic = () => {
         setScore(prev => prev + 10);
         setSelectedTiles([]);
       } else {
-        // Invalid match - select the new tile instead
+        // Invalid match - trigger haptic feedback and select the new tile instead
+        triggerHapticFeedback();
         setSelectedTiles([{ tile, index }]);
-        toast({
-          title: "Invalid match",
-          description: "Tiles must be identical/sum to 10 and be adjacent or at row ends",
-          variant: "destructive"
-        });
       }
     }
   };
