@@ -113,9 +113,11 @@ All colors MUST be HSL.
   
   .bg-grain {
     background-image: 
-      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.3) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 1px, transparent 1px);
-    background-size: 8px 8px, 12px 12px;
-    background-position: 0 0, 4px 4px;
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 1px, transparent 1px),
+      radial-gradient(circle at 40% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px),
+      radial-gradient(circle at 60% 20%, rgba(255,255,255,0.25) 0.8px, transparent 0.8px);
+    background-size: 12px 12px, 16px 16px, 8px 8px, 10px 10px;
+    background-position: 0 0, 6px 6px, 3px 3px, 9px 9px;
   }
 }
