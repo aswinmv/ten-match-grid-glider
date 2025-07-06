@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,5 +102,20 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom gradient and texture utilities */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
+  .bg-grain {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.3) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size: 8px 8px, 12px 12px;
+    background-position: 0 0, 4px 4px;
   }
 }
