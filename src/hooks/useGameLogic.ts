@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { toast } from '@/hooks/use-toast';
 
@@ -20,11 +19,11 @@ export const useGameLogic = () => {
   const [grid, setGrid] = useState<Tile[]>([]);
   const [selectedTiles, setSelectedTiles] = useState<SelectedTile[]>([]);
   const [score, setScore] = useState(0);
-  const [gameRows, setGameRows] = useState(9);
+  const [gameRows, setGameRows] = useState(13);
   const [hintTiles, setHintTiles] = useState<string[]>([]);
 
   // Initialize the game grid
-  const initializeGrid = useCallback((rows: number = 9) => {
+  const initializeGrid = useCallback((rows: number = 13) => {
     const newGrid: Tile[] = [];
     let id = 0;
     
