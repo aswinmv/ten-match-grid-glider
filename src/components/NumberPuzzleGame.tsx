@@ -24,18 +24,18 @@ const NumberPuzzleGame = () => {
       <div className="max-w-md mx-auto sm:max-w-lg md:max-w-2xl">
         <ScoreBoard score={score} />
         
-        <GameControls 
-          onReset={resetGame}
-          onAddRow={addNewRow}
-          onHint={findHint}
-          hasAvailableMatches={hasAvailableMatches()}
-        />
-
         <GameGrid 
           grid={grid}
           isTileSelected={isTileSelected}
           isTileHinted={isTileHinted}
           onTileClick={handleTileClick}
+        />
+
+        <GameControls 
+          onReset={resetGame}
+          onAddRow={addNewRow}
+          onHint={findHint}
+          hasAvailableMatches={hasAvailableMatches()}
         />
 
         <GameRules />
